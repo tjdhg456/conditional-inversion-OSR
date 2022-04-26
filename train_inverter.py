@@ -50,10 +50,10 @@ def main(args):
     class_cond = args.class_cond
     class_type = args.class_type
     i = args.data_id
-    device = args.gpu
-    
-    data_root = '/home/sung/dataset/imagenet'
-    classifier_path = '/home/sung/checkpoint/imp/%d/best_model.pt' %i
+    device = 'cuda'
+
+    data_root = '/home/dataset/imagenet'
+    classifier_path = '/home/personal/shin_sungho/checkpoint/imagenet100/%d/best_model.pt' %i
     target_list = list(range(100 * i, 100 * (i+1)))
     batch_size = 256
     total_epoch = 20
@@ -195,6 +195,5 @@ if __name__=='__main__':
     parser.add_argument('--class_cond', type=lambda x: x.lower()=='true', default=True)
     parser.add_argument('--class_type', type=str, default='label')
     parser.add_argument('--data_id', type=int, default=0)
-    parser.add_argument('--gpu', type=str, default='cuda:2')
     args = parser.parse_args()
     main(args)
